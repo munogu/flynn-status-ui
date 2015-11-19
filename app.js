@@ -5,21 +5,41 @@ var express = require('express');
 var request = require('request');
 var url = require('url');
 
+// config
+var config = {
+  // refresh interval (in seconds)
+  interval: process.env.INTERVAL || 30,
+  // flynn cluster domain
+  domain: (process.env.FLYNN_DOMAIN || 'demo.localflynn.com').replace('status.'),
+  // application title
+  title: process.env.TITLE || 'Flynn',
+  // status api request timeout (in seconds),
+  timeout: process.env.TIMEOUT || 5
+};
+
 // initialize status response
 var statusData = {};
 var loadStatus = function() {
   // get status
   request(url.format({
     protocol: 'http',
-    host: 'status.' + (process.env.FLYNN_DOMAIN || 'demo.localflynn.com').replace('status.'),
-  }), function (err, res, body) {
+    host: 'status.' + config.domain,
+  }), {
+    timeout: config.timeout * 1000
+  }, function (err, res, body) {
     // error handler
-    if (!err && res.statusCode !== 200) return;
-    // parse body string
-    try {
-      statusData = JSON.parse(body).data;
-    } catch (e) {
+    if (err || res.statusCode !== 200) {
+      // log error
+      console.error('Api request error: %s', err ? err.toString() : res.statusCode);
+      // move on
       return;
+    } else {
+      // parse body string
+      try {
+        statusData = JSON.parse(body).data;
+      } catch (e) {
+        return;
+      }
     }
   });
 };
@@ -27,8 +47,8 @@ var loadStatus = function() {
 // initial load
 loadStatus();
 
-// set interval (every 30 secs)
-setInterval(loadStatus, 30000);
+// set interval
+setInterval(loadStatus, config.interval * 1000);
 
 // initialize application
 var app = express();
@@ -47,7 +67,7 @@ app.use(express.static('public'));
 app.get('/', function(req, res, next) {
   // render page
   res.render('main', {
-    title: process.env.TITLE || 'Flynn',
+    title: config.title,
     status: statusData.status || 'unknown',
     services: statusData.detail || null
   }, function(err, html) {
