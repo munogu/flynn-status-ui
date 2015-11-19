@@ -1,0 +1,44 @@
+doctype html
+html
+  block vars
+  head
+    //- base
+    base(href='/')
+    //- title
+    title Status · #{title}
+    //- encoding
+    meta(charset='utf-8')
+    //- favicon
+    link(rel='icon', type='image/x-icon', href='/favicon-#{status}.ico')
+    //- viewport
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    //- stylesheets
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    .container
+      //- header
+      .header(class='header-#{status}')
+        h2 #{title} Status
+        if (status === 'healthy')
+          p All systems operational 
+        else if (status === 'unhealthy')
+          p Houston, we have a problem
+      //- panel
+      .panel
+        if services
+          ul
+            each service, key in services
+              li
+                = key
+                span.badge(class='badge-#{service.status}')= service.status
+        else
+          .blankslate
+            h2 Status unknown
+            p Hold on tight... We are nearly there!
+      //- footer
+      .footer
+        span Powered by
+        | &nbsp;
+        a(href='https://flynn.io/', target='_blank', title='Flynn') Flynn
+        | &nbsp;&amp;&nbsp;
+        a(href='https://github.com/jiabin/flynn-status-ui', target='_blank', title='Flynn Status UI') Flynn Status UI
