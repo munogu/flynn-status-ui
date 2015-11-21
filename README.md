@@ -2,25 +2,32 @@
 
 A simple interface for visualizing flynn cluster status.
 
-## 1) Installation
+- [Installation](#installation)
+  + [On Flynn using dashboard](#installing-on-flynn-using-dashboard)
+  + [On Flynn using cli](#installing-on-flynn-using-cli)
+  + [Locally](#installing-locally)
+- [Configuration](#installation)
+- [Reporting an issue or a feature request](#reporting-an-issue-or-a-feature-request)
 
-Installing Flynn Status UI is a fairly simple process. Select one
+## Installation
 
- First make sure that you have a running Flynn cluster and follow one of the methods below:
+Installing Flynn Status UI is a fairly simple process as the only requirements are a working Flynn cluster (duh?) and node.js.
 
-### A) Using Flynn dashboard
+There are few different ways to install Flynn Status UI. Pick the one Follow one of the methods below:
+
+### Installing on Flynn using dashboard
 
 To install using Flynn dashboard open the url below and follow the instructions on page
 
-https://dashboard.foobar.flynnhub.com/github?org=jiabin&repo=flynn-status-ui&owner=jiabin&branch=master
+https://dashboard.foobar.flynnhub.com/github?owner=jiabin&repo=flynn-status-ui
 
 - If you are using a custom domain to access your cluster, replace `foobar.flynnhub.com` with that domain!
 
 - If you are using an auto-generated flynnhub subdomain, replace `foobar` with id assigned to your cluster!
 
-> For Vagrant clusters: https://dashboard.demo.localflynn.com/github?org=jiabin&repo=flynn-status-ui&owner=jiabin&branch=master
+> For Vagrant clusters: https://dashboard.demo.localflynn.com/github?owner=jiabin&repo=flynn-status-ui
 
-### B) Using Flynn cli
+### Installing on Flynn using cli
 
 To install using Flynn cli
 
@@ -34,17 +41,35 @@ flynn create status-ui
 # (Optional) Set flynn cluster domain
 # Defaults to "demo.localflynn.com"
 # Vagrant users may skip this step
-flynn env set FLYNN_DOMAIN=flynn.example.com
+flynn env set FLYNN_DOMAIN=foobar.flynngub.com
 
 # Deploy application
 git push flynn master
 ```
 
-## 2) Configuration
+### Installing locally
 
-Flynn Status UI stores config in environment variables.
+> Flynn Status UI requires node.js/npm. Make sure that you have installed and configured node.js.
 
-### 2.1) Reference
+```
+# Install dependencies via npm
+cd /path/to/flynn-status-ui && npm install
+
+# Set Flynn domain
+export FLYNN_DOMAIN=foobar.flynngub.com
+
+# Set title
+export TITLE="Acme Inc."
+
+# Run application
+npm start
+```
+*Not tested on Windows*
+
+
+## Configuration
+
+Flynn Status UI stores configuration in environment variables.
 
 | Key          | Description                              | Default value       |
 |--------------|------------------------------------------|---------------------|
@@ -53,32 +78,10 @@ Flynn Status UI stores config in environment variables.
 | INTERVAL     | Check interval (in seconds)              | 30                  |
 | TIMEOUT      | Status HTTP request timeout (in seconds) | 5                   |
 
-### 2.2) Example
+Learn more:
 
-```
-# You need to execute commands from application root
-cd /path/to/flynn-status-ui
+* [Flynn - How can I pass configuration to my app?](https://flynn.io/docs/faq/how-can-i-pass-configuration-to-my-app)
 
-# Change application title
-flynn env set TITLE="Acme Inc."
-
-# Change check interval title
-flynn env set INTERVAL=60
-```
-
-## 3) Development
-
-Before installing Flynn Status UI make sure that you have node and npm installed.
-
-```
-# Install dependencies
-cd /path/to/flynn-status-ui && npm install
-
-# Run application
-FLYNN_DOMAIN=flynn.example.com npm start
-```
-
-
-## 4) Reporting an issue or a feature request
+## Reporting an issue or a feature request
 
 Issues and feature requests related to this project are tracked in the Github issue tracker: https://github.com/jiabin/flynn-status-ui/issues
