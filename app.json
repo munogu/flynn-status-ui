@@ -5,6 +5,12 @@
     "repository": "https://github.com/jiabin/flynn-status-ui",
     "logo": "https://raw.githubusercontent.com/jiabin/flynn-status-ui/master/public/img/flynn.png",
     "success_url": "/",
+    "env": {
+      "FLYNN_DOMAIN": {
+        "description": "Flynn cluster domain",
+        "value": "demo.localflynn.com"
+      }
+    },
     "keywords": [
         "flynn",
         "status",
