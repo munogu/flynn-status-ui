@@ -9,6 +9,8 @@ A simple interface for visualizing flynn cluster status.
 - [Configuration](#installation)
 - [Reporting an issue or a feature request](#reporting-an-issue-or-a-feature-request)
 
+![Screenshot](public/img/screenshots/healthy.png)
+
 ## Installation
 
 Installing Flynn Status UI is a fairly simple process as the only requirements are a working Flynn cluster (duh?) and node.js.
