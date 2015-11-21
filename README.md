@@ -1,10 +1,12 @@
 # Flynn Status UI
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jiabin/flynn-status-ui)
 
 A simple interface for visualizing flynn cluster status.
 
 - [Installation](#installation)
   + [On Flynn using dashboard](#installing-on-flynn-using-dashboard)
   + [On Flynn using cli](#installing-on-flynn-using-cli)
+  + [On Heroku](#installing-on-heroku)
   + [Locally](#installing-locally)
 - [Configuration](#installation)
 - [Reporting an issue or a feature request](#reporting-an-issue-or-a-feature-request)
@@ -49,6 +51,12 @@ flynn env set FLYNN_DOMAIN=foobar.flynngub.com
 git push flynn master
 ```
 
+### Installing on Heroku
+
+You may want to keep Flynn Status UI outside of your cluster. This way the status page will remain online even if something should happen to go wrong with your cluster.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jiabin/flynn-status-ui)
+
 ### Installing locally
 
 > Flynn Status UI requires node.js/npm. Make sure that you have installed and configured node.js.
@@ -83,6 +91,7 @@ Flynn Status UI stores configuration in environment variables.
 Learn more:
 
 * [Flynn - How can I pass configuration to my app?](https://flynn.io/docs/faq/how-can-i-pass-configuration-to-my-app)
+* [Heroku - Configuration and Config Vars](https://devcenter.heroku.com/articles/config-vars)
 
 ## Reporting an issue or a feature request
 
