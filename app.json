@@ -9,6 +9,10 @@
       "FLYNN_DOMAIN": {
         "description": "Flynn cluster domain",
         "value": "demo.localflynn.com"
+      },
+      "AUTH_KEY": {
+        "description": "Status app authentication key",
+        "required": true
       }
     },
     "keywords": [

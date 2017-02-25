@@ -46,6 +46,7 @@ flynn create status-ui
 # Defaults to "demo.localflynn.com"
 # Vagrant users may skip this step
 flynn env set FLYNN_DOMAIN=foobar.flynngub.com
+flynn env set AUTH_KEY=xxx
 
 # Deploy application
 git push flynn master
@@ -68,6 +69,9 @@ cd /path/to/flynn-status-ui && npm install
 # Set Flynn domain
 export FLYNN_DOMAIN=foobar.flynngub.com
 
+# Set Auth key
+export AUTH_KEY=xxx
+
 # Set title
 export TITLE="Acme Inc."
 
@@ -84,6 +88,7 @@ Flynn Status UI stores configuration in environment variables.
 | Key          | Description                              | Default value       |
 |--------------|------------------------------------------|---------------------|
 | FLYNN_DOMAIN | Flynn cluster domain                     | demo.localflynn.com |
+| AUTH_KEY     | Status app authentication key            |                     |
 | TITLE        | Application title                        | Flynn               |
 | INTERVAL     | Check interval (in seconds)              | 30                  |
 | TIMEOUT      | Status HTTP request timeout (in seconds) | 5                   |

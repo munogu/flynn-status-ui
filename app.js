@@ -5,6 +5,8 @@ var express = require('express');
 var request = require('request');
 var url = require('url');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 // config
 var config = {
   // refresh interval (in seconds)
@@ -20,26 +22,28 @@ var config = {
 // initialize status response
 var statusData = {};
 var loadStatus = function() {
+  let headers = {}
+  if (process.env.AUTH_KEY) {
+    headers.authorization = 'Basic ' + new Buffer(':' + process.env.AUTH_KEY).toString('base64');
+  }
   // get status
-  request(url.format({
-    protocol: 'http',
-    host: 'status.' + config.domain,
-  }), {
-    timeout: config.timeout * 1000
+  request({
+    url: url.format({
+      protocol: 'https',
+      host: 'status.' + config.domain,
+      pathname: '/'
+    }),
+    headers: headers,
+    timeout: config.timeout * 1000,
+    json: true
   }, function (err, res, body) {
     // error handler
-    if (err || res.statusCode !== 200) {
+    if (err) {
       // log error
       console.error('Api request error: %s', err ? err.toString() : res.statusCode);
-      // move on
-      return;
-    } else {
-      // parse body string
-      try {
-        statusData = JSON.parse(body).data;
-      } catch (e) {
-        return;
-      }
+      console.error(body)
+    } else if (body && body.data) {
+      statusData = body.data;
     }
   });
 };
