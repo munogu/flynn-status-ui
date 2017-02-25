@@ -71,6 +71,7 @@ body { background-color: #f7f7f7; }
 .footer {
   color: #aaa;
   font-size: 10px;
+  margin-bottom: 10px;
   font-weight: bold;
   text-align: right;
   text-transform: uppercase;
