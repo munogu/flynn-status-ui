@@ -1,5 +1,5 @@
 # Flynn Status UI
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jiabin/flynn-status-ui)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/munogu/flynn-status-ui)
 
 A simple interface for visualizing flynn cluster status.
 
@@ -23,13 +23,13 @@ There are few different ways to install Flynn Status UI. Pick the one Follow one
 
 To install using Flynn dashboard open the url below and follow the instructions on page
 
-https://dashboard.foobar.flynnhub.com/github?owner=jiabin&repo=flynn-status-ui
+https://dashboard.foobar.flynnhub.com/github?owner=munogu&repo=flynn-status-ui
 
 - If you are using a custom domain to access your cluster, replace `foobar.flynnhub.com` with that domain!
 
 - If you are using an auto-generated flynnhub subdomain, replace `foobar` with id assigned to your cluster!
 
-> For Vagrant clusters: https://dashboard.demo.localflynn.com/github?owner=jiabin&repo=flynn-status-ui
+> For Vagrant clusters: https://dashboard.demo.localflynn.com/github?owner=munogu&repo=flynn-status-ui
 
 ### Installing on Flynn using cli
 
@@ -37,7 +37,7 @@ To install using Flynn cli
 
 ```
 # Clone git repository
-git clone git@github.com:jiabin/flynn-status-ui.git && cd flynn-status-ui
+git clone git@github.com:munogu/flynn-status-ui.git && cd flynn-status-ui
 
 # Create flynn application
 flynn create status-ui
@@ -55,7 +55,7 @@ git push flynn master
 
 You may want to keep Flynn Status UI outside of your cluster. This way the status page will remain online even if something should happen to go wrong with your cluster.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/jiabin/flynn-status-ui)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/munogu/flynn-status-ui)
 
 ### Installing locally
 
@@ -95,4 +95,4 @@ Learn more:
 
 ## Reporting an issue or a feature request
 
-Issues and feature requests related to this project are tracked in the Github issue tracker: https://github.com/jiabin/flynn-status-ui/issues
+Issues and feature requests related to this project are tracked in the Github issue tracker: https://github.com/munogu/flynn-status-ui/issues

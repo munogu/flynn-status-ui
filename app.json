@@ -1,9 +1,9 @@
 {
     "name": "Flynn Status UI",
     "description": "Flynn cluster status UI",
-    "website": "https://github.com/jiabin/flynn-status-ui",
-    "repository": "https://github.com/jiabin/flynn-status-ui",
-    "logo": "https://raw.githubusercontent.com/jiabin/flynn-status-ui/master/public/img/flynn.png",
+    "website": "https://github.com/munogu/flynn-status-ui",
+    "repository": "https://github.com/munogu/flynn-status-ui",
+    "logo": "https://raw.githubusercontent.com/munogu/flynn-status-ui/master/public/img/flynn.png",
     "success_url": "/",
     "env": {
       "FLYNN_DOMAIN": {
